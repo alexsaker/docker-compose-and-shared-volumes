@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  app1:
+    build: 
+        context: ./app1
+        dockerfile: Dockerfile
+    volumes: 
+        - shared:/tmp:rw
+  app2:
+    build: 
+        context: ./app2
+        dockerfile: Dockerfile
+    volumes: 
+        - shared:/tmp:rw
+volumes: 
+    shared:
+     
+            
