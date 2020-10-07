@@ -1,23 +1,29 @@
 # Docker and  volumes
-
-## Create a shared volume
+## First Technique
+You need to create the shared volume first and use it in the docker compose file.
+### Create a shared volume
 ```bash
 docker volume create --driver local \
     --opt type=none \
-    --opt device=/ \
+    --opt device=/$PWD \
     --opt o=bind shared
 ```
-## Run app1
+### Run app1
 ```bash
-docker-compose run app1
+docker-compose f docker-compose-first-technique.yml run app1
 ```
-## Run app2
+### Run app2
 ```bash
-docker-compose run app2
+docker-compose f docker-compose-first-technique.yml run app2
 ```
 
-## Add a file in app1 @ /tmp
+## Second Technique
+You can create the shared volume within the docker compose file.
+### Run app1
 ```bash
-touch /tmp/test.txt
+docker-compose f docker-compose-second-technique.yml run app1
 ```
-You will then be able to see the file ùin app2 @ /tmp
+### Run app2
+```bash
+docker-compose f docker-compose-second-technique.yml run app2
+```
